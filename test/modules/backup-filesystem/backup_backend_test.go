@@ -52,7 +52,7 @@ func moduleLevelStoreBackupMeta(t *testing.T) {
 	t.Run("store backup meta in fs", func(t *testing.T) {
 		logger, _ := test.NewNullLogger()
 		sp := fakeStorageProvider{dataDir}
-		params := moduletools.NewInitParams(sp, nil, logger)
+		params := moduletools.NewInitParams(sp, nil, logger, nil)
 
 		fs := modstgfs.New()
 		err := fs.Init(testCtx, params)
@@ -112,7 +112,7 @@ func moduleLevelCopyObjects(t *testing.T) {
 	t.Run("copy objects", func(t *testing.T) {
 		logger, _ := test.NewNullLogger()
 		sp := fakeStorageProvider{dataDir}
-		params := moduletools.NewInitParams(sp, nil, logger)
+		params := moduletools.NewInitParams(sp, nil, logger, nil)
 
 		fs := modstgfs.New()
 		err := fs.Init(testCtx, params)
@@ -153,7 +153,7 @@ func moduleLevelCopyFiles(t *testing.T) {
 
 		logger, _ := test.NewNullLogger()
 		sp := fakeStorageProvider{dataDir}
-		params := moduletools.NewInitParams(sp, nil, logger)
+		params := moduletools.NewInitParams(sp, nil, logger, nil)
 
 		fs := modstgfs.New()
 		err = fs.Init(testCtx, params)
