@@ -55,6 +55,10 @@ type fakeSettings struct {
 	openAIModelVersion string
 }
 
+func (f *fakeSettings) ClassName() string {
+	return ""
+}
+
 func (f *fakeSettings) PropertyIndexed(propName string) bool {
 	return f.skippedProperty != propName
 }

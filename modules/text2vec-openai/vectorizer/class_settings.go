@@ -47,6 +47,10 @@ func NewClassSettings(cfg moduletools.ClassConfig) *classSettings {
 	return &classSettings{cfg: cfg}
 }
 
+func (ic *classSettings) ClassName() string {
+	return ic.cfg.ClassName()
+}
+
 func (ic *classSettings) PropertyIndexed(propName string) bool {
 	if ic.cfg == nil {
 		// we would receive a nil-config on cross-class requests, such as Explore{}
