@@ -15,6 +15,7 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
+	modrerankercohere "github.com/weaviate/weaviate/modules/reranker-cohere"
 	"net"
 	"net/http"
 	"os"
@@ -484,6 +485,14 @@ func registerModules(appState *state.State) error {
 		appState.Logger.
 			WithField("action", "startup").
 			WithField("module", "cross-ranker-transformers").
+			Debug("enabled module")
+	}
+
+	if _, ok := enabledModules["reranker-cohere"]; ok {
+		appState.Modules.Register(modrerankercohere.New())
+		appState.Logger.
+			WithField("action", "startup").
+			WithField("module", "reranker-cohere").
 			Debug("enabled module")
 	}
 
