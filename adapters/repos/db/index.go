@@ -944,8 +944,7 @@ func (i *Index) objectSearchByShard(ctx context.Context, limit int, filters *fil
 
 	if len(resultObjects) == len(resultScores) {
 
-	
-		//Force a stable sort order by UUID
+		// Force a stable sort order by UUID
 
 		type resultSortable struct {
 			object *storobj.Object
@@ -954,8 +953,7 @@ func (i *Index) objectSearchByShard(ctx context.Context, limit int, filters *fil
 		objs := resultObjects
 		scores := resultScores
 		var results []resultSortable = make([]resultSortable, len(objs))
-		for i, _ := range objs {
-
+		for i := range objs {
 			results[i] = resultSortable{
 				object: objs[i],
 				score:  scores[i],
